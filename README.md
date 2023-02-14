@@ -14,7 +14,7 @@ This is a Flask app project that uses a Googlemaps API to generate directions fr
 5. Change the local version to 3.10.7, run: ```pyenv local 3.10.7```
 6. run: ```pyenv local``` to check the version of pyenv
 
-### Flask Installation
+### Flask Installation 
 1. Install flask, run: ```pip3 install flask```
 2. Create app.py and add imports
 3. run: ```export FLASK_APP=app.py```
