@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/styles.css">
+    <link rel="stylesheet" href="../static/galaxy.css">
+    <title>QuestMap</title>
+  </head>
+
+  <body>
+    <div class="quest-wrapper">
+      <div class="quest">
+        <h2>QuestMap</h2>
+        <h3>your destination awaits!</h3>
+        <form id="myForm" method="get" onsubmit="getInfo(); return false;">
+          <label for="currentLocation">From:</label><br>
+          <input type="text" id="currentLocation" name="currentLocation" required><br>
+          <label for="destination">To:</label><br>
+          <input type="text" id="destination" name="destination" required><br><br>
+          <label for="transit mode">Select your preferred method of transit:</label><br>
+          <input type="radio" id="driving" name="radio" value="driving" required>
+          <label for="driving">Driving</label><br>
+          <input type="radio" id="transit" name="radio" value="transit" required>
+          <label for="transit">Public Transit</label><br>
+          <input type="submit" value="Submit">
+        </form>
+      </div>
+    </div>
+
+    <div class="bg"></div>
+    <div class="star-field">
+    <div class="layer"></div>
+    <div class="layer"></div>
+    <div class="layer"></div>
+  <script>
+  function getInfo(){
+    var currentLocation = document.getElementById("currentLocation").value;
+    var destination = document.getElementById("destination").value;
+    var radio = document.getElementsByName('radio');
+    var transit = ""
+    for (i = 0; i < radio.length; i++) {
+                if(radio[i].checked)
+                  transit = radio[i].value;
+            }
+    var url = "/directions/" + currentLocation + "/" + destination + "/" + transit;
+    // open in same window
+    // window.location.href = url;
+    // open in new window
+    var win = window.open(url, '_blank');
+  }
+  </script>
+  </body>
+</html>
